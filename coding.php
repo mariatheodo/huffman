@@ -12,31 +12,22 @@
 	</head>
 	<body>
 	
-	<p> Το κείμενό σας ήταν το <?php echo $m; ?></p> <!-- εμφανίζω αυτό που πληκτρολογήθηκε -->
-	<pre>
+	<p> Το κείμενό σας ήταν το "<?php echo $m; ?>"</p> <!-- εμφανίζω αυτό που πληκτρολογήθηκε -->
+	<p> Οι χαρακτήρες που εμφανίζονται με τη συχνότητά τους είναι:<p>
+
 	<?php
-		$letters = array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"); // δημιουργώ πίνακα με όλα τα γράμματα
-		$matrix = array_fill_keys($letters, 0); // δίνω μηδενικές τιμές σε όλα τα κλειδιά 
+		$letters = count_chars($m, 1); // δημιουργώ πίνακα με όλα τα γράμματα
 		
-		for ($x = 0; $x < strlen($m); $x++) {
-			@$matrix[substr($m, $x, 1)]++; // μετράω πόσες εμφανίσεις έχει κάθε γράμμα
-		} 
-		$counts = array();
-		foreach ($matrix as $letter => $num) {
-			if ($num != 0) {
-				$counts[$letter] = $num; // βάζω στον πίνακα counts μόνο αυτά που έχουν έστω και μία εμφάνιση
-			}
+		foreach ($letters as $i => $val) {
+			echo chr($i);
+			echo $val; 
+			echo "@";
+			echo round($val/strlen($m), 2);
+			echo "<br>";
 		}
-		$sum = 0;
-		foreach ($counts as $letter => $num) {
-			$counts[$letter] = round($num / strlen($m), 3); // στον πίνακα counts οι τιμές είναι η συχνότητα εμφάνισης κάθε χαρακτήρα
-			$sum += $num / strlen($m);
-		}
-		asort($counts);
-		print_r($counts);
-		print_r($sum);
+
 	?>
-	</pre>
+
 	
 	
 	</body>
