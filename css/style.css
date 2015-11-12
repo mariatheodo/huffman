@@ -28,8 +28,16 @@ body {
 }
 
 .header {
-	background-color: #FF0000;
+	background-color: #778088;
 	text-align: center;
+}
+
+.empty {
+	
+}
+
+.row-fluid {
+	word-wrap: break-word;
 }
 
 hr {
